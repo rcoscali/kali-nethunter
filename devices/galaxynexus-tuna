@@ -29,7 +29,8 @@ if [ $LOCALGIT == 1 ]; then
   cp -rf ${basepwd}/kernel_samsung_tuna ${basedir}/kernel
 else
   #git clone https://github.com/binkybear/kernel_samsung_tuna.git -b thunderkat ${basedir}/kernel
-  git clone https://github.com/SlimRoms/kernel_samsung_tuna.git -b kk4.4 ${basedir}/kernel
+  #git clone https://github.com/SlimRoms/kernel_samsung_tuna.git -b kk4.4 ${basedir}/kernel
+  git clone https://github.com/rcoscali/nethunter-kernel-samsung-tuna.git
 fi
 cd ${basedir}/kernel
 
