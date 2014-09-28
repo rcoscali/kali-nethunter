@@ -35,6 +35,7 @@ FROZENKERNEL=0
 
 #########  Devices  ##########
 # Build scripts for each kernel is located under devices/devicename
+source devices/galaxynexus-tuna
 source devices/nexus10-manta
 source devices/nexus7-grouper-tilapia
 source devices/nexus7-flo-deb
@@ -104,6 +105,9 @@ echo ""
 echo -e "\e[31m	----------------------------  NEXUS 4 --------------HAMMERHEAD---------\e[0m"
 echo "	[5] Build for Nexus 4 with wireless USB support (Android 4.4+)"
 echo ""
+echo -e "\e[31m	-------------------------- GALAXY NEXUS  --------------TUNA------------\e[0m"
+echo "	[6] Build for Galaxy Nexus with wireless USB support (Android 4.4+)"
+echo ""
 if [ -f "${basedir}/flashkernel/kernel/kernel" ] && [ -d "${basedir}/flash" ]; then
 echo "	[77] Inject finished rootfs/kernel into ROM"
 fi
@@ -124,6 +128,7 @@ case $menuchoice in
 3) clear; f_deb ;;
 4) clear; f_hammerhead ;;
 5) clear; f_mako ;;
+6) clear; f_tuna ;;
 77) clear; f_rom_build ;;
 88) clear; f_rootfs ; f_flashzip; f_zip_save ;;
 99) f_cleanup ;;
@@ -249,6 +254,28 @@ case $deb_menuchoice in
 0) clear; f_interface ;;
 *) echo "Incorrect choice... " ;
 esac
+}
+
+f_tuna(){
+echo -e "\e[31m	------------------------- GALAXY NEXUS --------------------------\e[0m"
+echo ""
+echo "	[1] Build All - Kali rootfs and Kernel (Android 4.4+)"
+echo "	[2] Build Kernel Only"
+echo "	[0] Exit to Main Menu"
+echo ""
+echo ""
+# wait for character input
+
+read -p "Choice: " tuna_menuchoice
+
+case $tuna_menuchoice in
+
+1) clear; f_rootfs ; f_flashzip ; f_galaxynexus_kernel ; f_zip_save ; f_zip_kernel_save ; f_rom_build ;;
+2) clear; f_galaxynexus_kernel ; f_zip_kernel_save ;;
+0) clear; f_interface ;;
+*) echo "Incorrect choice..." ;
+esac
+
 }
 
 f_check_crosscompile(){
